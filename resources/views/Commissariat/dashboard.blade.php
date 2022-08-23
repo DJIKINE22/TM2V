@@ -1,0 +1,2 @@
+extends('layoutCom')
+@extends('content')
