@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder=" &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder=" recheches..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -98,7 +98,7 @@
                                 <div class="card text-white mb-4" id="card2">
                                     <div class="card-body">
                                         <div class="text">
-                                            <h1>7<i class="fa fa-car" style="margin:auto"></i></h1>
+                                            <h1>8<i class="fa fa-car" style="margin:auto"></i></h1>
                                                 <span>Voitures retrouvées</span>
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                                                     
                                                 </div>
                                                 <div class="text">
-                                                    <h1>19<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
+                                                    <h1>20<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
                                                     <span>Motos retrouvées</span>
                                                 </div>
                                             </div>

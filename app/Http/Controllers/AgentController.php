@@ -80,7 +80,7 @@ class AgentController extends Controller
                         'status' => 'agent',
                     ]
                     );
-                    return redirect('/voitures')->with('Bravo', 'Agent creer avec succes');
+                    return redirect('/voiture')->with('Bravo', 'Agent creer avec succes');
             }
 
         }
@@ -138,6 +138,9 @@ class AgentController extends Controller
     public function edit($id)
     {
         //
+        $agents =  Agent::findOrFail($id);
+    
+        return view ('agent.edit', compact(('agents')));
 
     }
 
@@ -162,9 +165,9 @@ class AgentController extends Controller
     public function destroy($id)
     {
         //
-        $agent = Agent::findOrFail($id);
-        $agent->delete();
+        $agents = Agent::findOrFail($id);
+        $agents->delete();
     
-        return redirect('/voitures')->with('success', 'Reservation supprimer avec succèss');
+        return redirect('/voiture')->with('success', 'Reservation supprimer avec succèss');
     }
 }

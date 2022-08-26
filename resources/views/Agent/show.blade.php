@@ -1,8 +1,10 @@
 @extends('layouts/commissariat')
-@section("content")
 @extends('layouts/djik')
 @section('content')
-<form  style="width:50%;margin:auto;" method="post" action="{{ route('vols.update', $vol->id ) }}">
+
+
+@endsection
+<form  style="width:50%;margin:auto;" method="post" action="{{ route('agents.update', $agents->id ) }}">
           <div class="form-group">
               @csrf
               @method('PATCH')
@@ -13,7 +15,7 @@
 
       <div class="card">
         <header class="card-header">
-            <p class="card-header-title">Mattricule : {{ $agents>matricule }}</p>
+            <p class="card-header-title">Mattricule : {{ $agents->matricule }}</p>
         </header>
         <div class="card-content">
             <div class="content">

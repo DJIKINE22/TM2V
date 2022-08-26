@@ -1,5 +1,4 @@
 @extends('layouts/commissariat')
-@extends('layouts.commissariat')
 @section("content")
 @extends('layouts/djik')
 @section('content')
@@ -82,39 +81,32 @@
             <!-- MAIN CONTENT-->
             <div class="main-content container">
                 <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Inscription Agent</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="row justify-content-center">
-        <div class="col-md">
-            
-                    <form method="POST" action="{{ route('Agent.create') }} ">
-                        @csrf
-                        @method('POST') 
-
-                        <div class="row mb-3">
-                            <label for="nom" class="col-md-3 ml-4 col-form-label">{{ __('Nom') }}</label>
-
-                            <div class="col-md-7">
-                                <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
-
-                                @error('nom')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                <!-- Modal -->
+                <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Inscription Agent</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row justify-content-center">
+                                    <div class="col-md">   
+                                        <form method="POST" action="{{ route('Agent.create') }} ">
+                                            @csrf
+                                            @method('POST') 
+                                            <div class="row mb-3">
+                                            <label for="nom" class="col-md-3 ml-4 col-form-label">{{ __('Nom') }}</label>
+                                            <div class="col-md-7">
+                                            <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+                                            @error('nom')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                             </div>
                         </div>
-
-
+                        
                         <div class="row mb-3">
                             <label for="prenom" class="col-md-3 ml-4 col-form-label ">{{ __('Prenom ') }}</label>
 
@@ -154,6 +146,17 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3" >
+                            <label for="enteprise" class="col-md-4 col-form-label text-md-end">{{ __('Commissariat') }}</label>
+                            <div class="col-md-6">
+                                <select name="commissariat">
+                                    @foreach($commissariats as $commissariats)
+                                    <option value="{{$commissariats->id }}">{{$commissariats->nom}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -211,21 +214,19 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Ajouter') }}
-                                </button>
+                                
                             </div>
                         </div>
-                    </form>
-            
-        </div>
-    </div>
+                </div>
+                </div>
         
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+            </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary"> {{ __('Ajouter') }}</button>
+        </div>
+        </form>
     </div>
   </div>
 </div>
@@ -236,7 +237,7 @@
   <div class="table responsive">
   <table class="table  table-bordered  table-hover table-sm table-responsive table-striped" id="datatable">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">Matricule</th>
       <th scope="col">Nom</th>
       <th scope="col">Prenom</th>
@@ -256,10 +257,10 @@
                     
                         </form>
                     </td>
-                    <td><a href="{{ url('/agentShow', $agents->id)}}" class="btn btn-primary">Details</a></td>
-                    <td><a href="{{ url('/agent/edit', $agents->id)}}" class="btn btn-primary">Modifier</a></td>
+                    <td><a href="{{ route('agents.show', $agents->id)}}" class="btn btn-primary">Details</a></td>
+                    <td><a href="{{ route('agents.edit', $agents->id)}}" class="btn btn-primary">Modifier</a></td>
                     <td>
-                        <form action="{{ url('agents/delete', $agents->id)}}" method="post">
+                        <form action="{{ route('agents.destroy', $agents->id)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -267,12 +268,11 @@
                     </td>
                 </tr>
                 @endforeach
-               
-            </tbody>
-  </table>
-  </div>
+    </tbody>
+</table>
 </div>
-            </div>
+</div>
+</div>
             <!-- END MAIN CONTENT-->
             
             

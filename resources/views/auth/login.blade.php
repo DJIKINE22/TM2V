@@ -1,22 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
-                            </a>
-                        </div>
-                        <div class="login-form">
-                        <form method="POST" action="{{ route('login') }}">
+<style>
+.container {
+    /* width:50%; */
+    margin: auto;
+    margin-top: 120px;
+    text-align: center;
+    font-weight:bold;
+    /* font-size:20px; */
+    /* background-color:#FFA07A; */
+  }
+  .card-header {
+    background:#EE6030
+  }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center"><img src="{{('images/icon/logo.png')}}"/></div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -55,8 +65,8 @@
                             </div>
                         </div>
 
-                        <div class="row ">
-                            <div class="col-md-12 offset-md-4">
+                        <div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Connexion') }}
                                 </button>
@@ -69,18 +79,9 @@
                             </div>
                         </div>
                     </form>
-                            <div class="register-link">
-                                <p>
-                                    
-                                    <a href="#">S'inscrire</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
+</div>
 @endsection

@@ -38,6 +38,7 @@ Route::post('/utilisateurs', [App\Http\Controllers\UtilisateurController::class,
 Route::get('/Agents/create', [App\Http\Controllers\AgentController::class,'index'])->name('agent');
 Route::post('/Agent', [App\Http\Controllers\AgentController::class,'create'])->name('Agent.create');
 Route::get('/agent/liste', [App\Http\Controllers\AgentController::class,'liste'])->name('AgentListe');
+Route::get('/agent/delete', [App\Http\Controllers\AgentController::class,'destroy'])->name('AgentDelete');
 Route::resource('agents', 'AgentController');
 
 Route::get('/voiture', [App\Http\Controllers\AgentController::class,'liste']);

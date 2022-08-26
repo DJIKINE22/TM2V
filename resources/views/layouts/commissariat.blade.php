@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>TM2V</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{asset('css/font-face.css')}}" rel="stylesheet" media="all">
@@ -47,7 +47,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="{{('images/icon/logo.png')}}" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -140,8 +140,8 @@
                                         </li>
                                     </ul>
                             </li>
-                                <li class="has-sub {{Request::is('voitures') ? 'active':''}} ">
-                                    <a class="js-arrow" href="{{url('/voitures')}}">
+                                <li class="has-sub {{Request::is('voiture') ? 'active':''}} ">
+                                    <a class="js-arrow" href="{{url('/voiture')}}">
                                     <i class="fas fa-car"></i>Agent</a>
                                     
                                 </li>

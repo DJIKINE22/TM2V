@@ -39,7 +39,7 @@ class HomeController extends Controller
         }
         else if ($user-> status == 'commissaire'){
             $agents = Agent::count();
-            return view('commissaria.dashboard',compact('agents'));
+            return view('commissaria.dashboard2',compact('agents'));
         } 
         else{
             return view('home');

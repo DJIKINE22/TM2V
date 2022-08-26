@@ -9,8 +9,10 @@
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
 
+    
+
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>TM2V</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{asset('css/font-face.css')}}" rel="stylesheet" media="all">
