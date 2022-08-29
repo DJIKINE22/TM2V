@@ -46,4 +46,13 @@ Route::get('/Agent/{id}', [App\Http\Controllers\AgentController::class,'show'])-
 
 Route::get('/agent', [App\Http\Controllers\AgentController::class,'liste']);
 
+
+
+
+
+Route::get('/voiture/create', [App\Http\Controllers\VoitureController::class,'index']);
+
+
+
+
     
