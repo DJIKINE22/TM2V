@@ -9,11 +9,7 @@
               @csrf
               @method('PATCH')
            
-          
-          
-      </form>
-
-      <div class="card">
+              <div class="card">
         <header class="card-header">
             <p class="card-header-title">Mattricule : {{ $agents->matricule }}</p>
         </header>
@@ -46,3 +42,7 @@
             </div>
         </div>
     </div>
+          
+      </form>
+
+     

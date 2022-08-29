@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('marque');
             $table->string('modele');
             $table->string('couleur');
-            $table->string('photo');
+            $table->string('photo')->nullable();;
             $table->string('status');
             $table->timestamps();
         });

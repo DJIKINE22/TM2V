@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commissariat;
 use App\Models\User;
+use App\Models\Agent;
 use App\Http\Controllers\CommissariatController;
 
 class CommissariatController extends Controller
@@ -17,8 +18,8 @@ class CommissariatController extends Controller
     public function index()
     {
        // Cette methode permet d'afficher la form
-    //    $commissariats = Agent::count();
-       return view('Commissariat.create');
+    $commissariats = Commissariat::all();
+       return view('Commissaria.index',compact('commissariats'));
     }
     public function dashboard()
     {
@@ -99,7 +100,10 @@ class CommissariatController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
+        $commissariats = Commissariat::findOrFail($id);
+        return view('Commissaria.index', compact('commissariats'));
+        
     }
 
     /**

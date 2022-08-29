@@ -21,17 +21,20 @@ class AgentController extends Controller
     public function index()
     {
        // Cette methode permet d'afficher la form
-       $commissariats = Agent::count();
       
+       $commissariats = Agent::count();
+       $agents = Agent::orderBy('created_at' ,'desc')-> paginate(5);
+        
+
       $commissariats = Commissariat::all();
-       return view('Agent.create', compact('commissariats','commissariats'));
+       return view('Agent.index', compact('commissariats','commissariats','agents'));
     }
     public function liste()
     {
       $commissariats = Commissariat::all();
 
-        $agents = Agent::all();
-        return view('Agent.index' , compact('agents','commissariats'));
+        $agents = Agent::orderBy('created_at' ,'desc')-> paginate(4);
+        return view('Agent.index2' , compact('agents','commissariats'));
     }
 
     /**
@@ -80,7 +83,7 @@ class AgentController extends Controller
                         'status' => 'agent',
                     ]
                     );
-                    return redirect('/voiture')->with('Bravo', 'Agent creer avec succes');
+                    return redirect('/agent')->with('Bravo', 'Agent creer avec succes');
             }
 
         }
@@ -106,27 +109,8 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        //
-        try {
-
-            $agents = Agent::findOrFail(2);
-
-            
-
-        } 
-
-        catch (ModelNotFoundException $e) {
-
-            
-
-        }
-
-        catch (Throwable $e) {
-
-            \Log::error('Erreur inattendue : ', [$e]);
-
-        }
-        return view('Agent.show', compact('agents'));
+            $agents = Agent::findOrFail($id);
+            return view('/Agent/show3', compact('agents'));
     }
 
     /**
@@ -140,7 +124,7 @@ class AgentController extends Controller
         //
         $agents =  Agent::findOrFail($id);
     
-        return view ('agent.edit', compact(('agents')));
+        return view ('agent.edit2', compact(('agents')));
 
     }
 
@@ -154,6 +138,19 @@ class AgentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'nom'=>['required','string','max:255'],
+                'prenom'=>['required','string','max:255'],
+                'matricule'=>['required','string','max:255'],
+                'adresse'=>['required','string','max:255'],
+                'email'=>['required','string','max:255'],
+                'password'=>['required','string','min:5','confirmed'],
+                'telephone'=>['required','string','max:25'],
+        ]);
+    
+        Vol::whereId($id)->update($validatedData);
+    
+        return redirect('/voiture')->with('success', 'Agent mise à jour avec succèss');
     }
 
     /**

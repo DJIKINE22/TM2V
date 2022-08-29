@@ -57,8 +57,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                        <img src="images/icon/logo.png" alt="Cool Admin" width="80%" auto; />
-
+                            <img src="{{('images/icon/logo.png')}}" alt="TM2V" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -124,7 +123,7 @@
                 <ul class="list-unstyled navbar__list">
                     <li class="has-sub nan-link  {{Request::is('home') ? 'active':''}}">
                         <a class="js-arrow" href="{{url('/home')}}">
-                            <i class="fas fa-tachometer-alt"></i>DashboardDD</a>
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
@@ -151,16 +150,7 @@
                                         </li>
                                     </ul>
                             </li>
-                                <li class="has-sub {{Request::is('agent') ? 'active':''}} ">
-                                    <a class="js-arrow" href="{{url('/agent')}}">
-                                    <i class="fa fa-users"></i>Agent</a>
-                                    
-                                </li>
-                                <li class="has-sub {{Request::is('commissariat') ? 'active':''}} ">
-                                    <a class="js-arrow" href="{{url('/commissariat')}}">
-                                    <i class="fa fa-users"></i>Commissariat</a>
-                                    
-                                </li>
+                                
                             </ul>
                         </ul>
                     </nav>

@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -14,19 +11,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center bg-#FFF">{{ __('Je crée mon compte') }}</div>
+                <div class="card-header">{{ __('Declaration de la perte') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('Utilisateur.create') }}">
+                    <form method="POST" action="{{ route('Voiture.create') }}">
                         @csrf
+                        @method('POST') 
 
                         <div class="row mb-3">
-                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Nom') }}</label>
+                            <label for="Immatriculation" class="col-md-4 col-form-label text-md-end">{{ __('Immatriculation') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+                                <input id="Immatriculation" type="text" class="form-control @error('immatri') is-invalid @enderror" name="immatri" value="{{ old('immatri') }}" required autocomplete="immatri" autofocus>
 
-                                @error('nom')
+                                @error('immatri')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -35,23 +33,66 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="prenom" class="col-md-4 col-form-label text-md-end">{{ __('Prenom') }}</label>
+                            <label for="marque" class="col-md-4 col-form-label text-md-end">{{ __('Marque') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
+                                <input id="marque" type="text" class="form-control @error('marque') is-invalid @enderror" name="marque" value="{{ old('marque') }}" required autocomplete="localite" autofocus>
 
-                                @error('prenom')
+                                @error('localite')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="nomCommissaire" class="col-md-4 col-form-label text-md-end">{{ __('Modele') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="modele" type="text" class="form-control @error('modele') is-invalid @enderror" name="modele" value="{{ old('modele') }}" required autocomplete="modele" autofocus>
+
+                                @error('modele')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="couleur" class="col-md-4 col-form-label text-md-end">{{ __('Couleur') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="couleur" type="couleur" class="form-control @error('couleur') is-invalid @enderror" name="couleur" value="{{ old('couleur') }}" required autocomplete="couleur" autofocus>
+
+                                @error('couleur')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="matricule" class="col-md-4 col-form-label text-md-end">{{ __('Matricule') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="matricule" type="text" class="form-control @error('prenomCommissaire') is-invalid @enderror" name="matricule" value="{{ old('matricule') }}" required autocomplete="matricule" autofocus>
+
+                                @error('matricule')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <label for="adresse" class="col-md-4 col-form-label text-md-end">{{ __('Adresse') }}</label>
 
                             <div class="col-md-6">
-                                <input id="adresse" type="text" class="form-control @error('adresse') is-invalid @enderror" name="adresse" value="{{ old('adresse') }}" required autocomplete="nom" autofocus>
+                                <input id="adresse" type="text" class="form-control @error('adresse') is-invalid @enderror" name="adresse" value="{{ old('adresse') }}" required autocomplete="adresse" autofocus>
 
                                 @error('adresse')
                                     <span class="invalid-feedback" role="alert">

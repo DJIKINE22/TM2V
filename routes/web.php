@@ -27,8 +27,10 @@ Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'index
 //route pour envoyez
 Route::post('/admin', [App\Http\Controllers\AdminController::class, 'create'])->name('Admin.create');
 
-Route::get('/commissariat/create', [App\Http\Controllers\CommissariatController::class, 'index'])->name('commissariat');
+Route::get('/commissariat', [App\Http\Controllers\CommissariatController::class, 'index'])->name('commissariat');
+Route::post('/Agent', [App\Http\Controllers\CommissariatController::class,'create'])->name('commissariat.create');
 Route::get('/commissariat/dashboard', [App\Http\Controllers\CommissariatController::class, 'dashboard'])->name('Comdashboard');
+Route::resource('commissariats', 'CommissariatController');
 //route pour envoyez
 Route::post('/commissaire', [App\Http\Controllers\CommissariatController::class, 'create'])->name('Commissariat.create');
 
@@ -37,10 +39,11 @@ Route::post('/utilisateurs', [App\Http\Controllers\UtilisateurController::class,
 
 Route::get('/Agents/create', [App\Http\Controllers\AgentController::class,'index'])->name('agent');
 Route::post('/Agent', [App\Http\Controllers\AgentController::class,'create'])->name('Agent.create');
-Route::get('/agent/liste', [App\Http\Controllers\AgentController::class,'liste'])->name('AgentListe');
+Route::get('/agent/liste', [App\Http\Controllers\AgentController::class,'liste']);
 Route::get('/agent/delete', [App\Http\Controllers\AgentController::class,'destroy'])->name('AgentDelete');
-Route::resource('agents', 'AgentController');
+Route::get('/Agent/{id}', [App\Http\Controllers\AgentController::class,'show'])->name('agents.show');
+// Route::resource('agents', 'AgentController');
 
-Route::get('/voiture', [App\Http\Controllers\AgentController::class,'liste']);
+Route::get('/agent', [App\Http\Controllers\AgentController::class,'liste']);
 
     

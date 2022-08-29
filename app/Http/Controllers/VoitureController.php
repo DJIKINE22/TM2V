@@ -15,22 +15,72 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        //
-        $voitures = Voiture::all();
+       // Cette methode permet d'afficher la form
 
-    return view('index', compact('voitures'));
+            $commissariats = Agent::count();
+            $agents = Agent::orderBy('created_at' ,'desc')-> paginate(5);
+                
+
+            $commissariats = Commissariat::all();
+            return view('Agent.index', compact('commissariats','commissariats','agents'));
     }
+   
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-        return view('create');
+        // resquest se charge de l'envoi et recuperation de donnees 
+        //ici nous allons definir les normes que doivent respectées nos differents champs
+        $verification = $request->validate(
+            [
+                'immatri'=>['required','string','max:255'],
+                'marque'=>['required','string','max:255'],
+                'modele'=>['required','string','max:255'],
+                'couleur'=>['required','string','max:255'],
+                'photo'=>['required','string','max:255'],
+                'carburant'=>['required','string','min:5','confirmed'],
+                
+                
+            ]
+        );
+        //ici nous allons definir les actions à faire si la verification est bonne
+        if($verification){
+            // nous allons creer un user avec les données saisies
+            $vehi = Vehicule::create([
+            'marque' => $request['marque'],
+            'modele' => $request['modele'],
+            'couleur' => $request['couleur'],
+            'status' => 'recherché',
+            ]);
+            if($vehi){
+                $perte = Perte::create(
+                    [ 
+                        'user' => $user-> Auth::id(),
+                        'vehicule' => $vehi->id(),
+                        'date'=>$request['date'],
+                    ]
+                    );}
+                    if($perte){
+                        $voi = Voiture::create(
+                            [ 
+                                'immatri'=>$request['immatri'],
+                                'marque'=>$request['marque'],
+                                'modele'=>$request['modele'],
+                                'couleur'=>$request['couleur'],
+                                'photo'=>$request['photo'],
+                                'carburant'=>$request['immatri'],
+                            ]
+                            );
+                    return redirect('/vehicule')->with('Bravo', 'Agent creer avec succes');
+            }
+
+        }
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -41,15 +91,6 @@ class VoitureController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate([
-            'code' => 'required',
-            'entreprise' => 'required',
-            
-        ]);
-    
-        $voitures = Vol::create($validatedData);
-    
-        return redirect('/voitures')->with('perte signaler  avec succèss');
     }
 
     /**
@@ -63,7 +104,7 @@ class VoitureController extends Controller
         //
         try {
 
-            $vol = Vol::findOrFail(2);
+            $agents = Agent::findOrFail(2);
 
             
 
@@ -80,7 +121,7 @@ class VoitureController extends Controller
             \Log::error('Erreur inattendue : ', [$e]);
 
         }
-        return view('show', compact('vol'));
+        return view('Agent.show3', compact('agents'));
     }
 
     /**
@@ -92,9 +133,10 @@ class VoitureController extends Controller
     public function edit($id)
     {
         //
-        $vol = Vol::findOrFail($id);
+        $agents =  Agent::findOrFail($id);
+    
+        return view ('agent.edit2', compact(('agents')));
 
-        return view('edit', compact('vol'));
     }
 
     /**
@@ -107,20 +149,19 @@ class VoitureController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'nom'=>['required','string','max:255'],
+                'prenom'=>['required','string','max:255'],
+                'matricule'=>['required','string','max:255'],
+                'adresse'=>['required','string','max:255'],
+                'email'=>['required','string','max:255'],
+                'password'=>['required','string','min:5','confirmed'],
+                'telephone'=>['required','string','max:25'],
+        ]);
     
-    $validatedData = $request->validate([
-        'code' => 'required',
-        'date_depart' => 'required',
-        'heure_depart' => 'required',
-        'nbre_plc_classA' => 'required',
-        'nbre_plc_classB' => 'required',
-        'prixA' => 'required',
-        'prixB' => 'required',
-    ]);
-
-    Vol::whereId($id)->update($validatedData);
-
-    return redirect('/vols')->with('success', 'Vol mise à jour avec succèss');
+        Vol::whereId($id)->update($validatedData);
+    
+        return redirect('/voiture')->with('success', 'Agent mise à jour avec succèss');
     }
 
     /**
@@ -132,9 +173,9 @@ class VoitureController extends Controller
     public function destroy($id)
     {
         //
-        $vol = Vol::findOrFail($id);
-        $vol->delete();
+        $agents = Agent::findOrFail($id);
+        $agents->delete();
     
-        return redirect('/vols')->with('success', 'Vol supprimer avec succèss');
+        return redirect('/voiture')->with('success', 'Reservation supprimer avec succèss');
     }
 }

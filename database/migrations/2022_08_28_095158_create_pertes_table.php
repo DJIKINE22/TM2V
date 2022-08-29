@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('motos', function (Blueprint $table) {
+        Schema::create('pertes', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_ch')->unique();
-            $table->string('marque');
-            $table->string('modele');
-            $table->string('couleur');
-            $table->string('photo')->nullable();;
-            $table->string('carburant');
+            $table->unsignedBigInteger('user');
             $table->unsignedBigInteger('vehicule');
-            $table->foreign('vehicule')->references('id')->on('vehicules')->onDelete('cascade');
+            $table->date('date_decla');
+            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('vehicule')->references('id')->on('vehicules');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motos');
+        Schema::dropIfExists('pertes');
     }
 };

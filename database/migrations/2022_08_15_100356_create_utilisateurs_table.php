@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('adresse');
-            $table->string('telephone');
+            $table->string('telephone')->unique();;
             $table->string('email');
             $table->string('password');
-            $table->string('status');
             $table->unsignedBigInteger('userId');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('voitures', function (Blueprint $table) {
             $table->id();
-            $table->string('immatri');
+            $table->string('immatri')->unique();
             $table->string('marque');
             $table->string('modele');
             $table->string('couleur');
-            $table->string('photo');
+            $table->string('photo')->nullable();;
             $table->string('carburant');
             $table->unsignedBigInteger('vehicule');
             $table->foreign('vehicule')->references('id')->on('vehicules')->onDelete('cascade');

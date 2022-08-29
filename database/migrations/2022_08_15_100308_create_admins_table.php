@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('adresse');
-            $table->string('telephone');
+            $table->string('telephone')->unique();;
             $table->string('email');
             $table->string('password');
             $table->unsignedBigInteger('userId');

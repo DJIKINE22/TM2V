@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Commissaire;
+use App\Models\Agent;
 
 class CommissaireController extends Controller
 {
@@ -17,7 +18,9 @@ class CommissaireController extends Controller
     public function index()
     {
        // Cette methode permet d'afficher la form
-       return view('Commissaire.create');
+       $agents = Agent::paginate(6);
+       $commissariat = Commissariat::orderBy('created_at' ,'desc')-> paginate(5);
+       return view('Commissaire.create',compact('agents', ('commissariat')));
     }
 
     /**

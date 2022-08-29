@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('commissariats', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('nom')->unique();
             $table->string('localite');
             $table->string('nomCommissaire');
             $table->string('prenomCommissaire');
-            $table->string('matricule');
+            $table->string('matricule')->unique();;
             $table->string('adresse');
-            $table->string('telephone');
+            $table->string('telephone')->unique();;
             $table->string('email');
             $table->string('password');
             $table->unsignedBigInteger('userId');

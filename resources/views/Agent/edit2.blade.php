@@ -1,16 +1,11 @@
-
-@extends('layouts.djik')
-@extends('layouts.commissariat')
+@extends('layouts.comm')
 @section('content')
-
-
-
 <form  style="width:50%;margin:auto;" method="post" action="{{ route('agents.update', $agents->id ) }}">
           <div class="form-group">
               @csrf
               @method('PATCH')
               <label for="code">Matricule :</label>
-              <input type="text" class="form-control" name="matricule" value="{{ $agents->matricule }}"/>
+              <input type="text" class="form-control" name="matricule" value="{{ $agents->matricule }}" disable/>
           </div>
 
           <div class="form-group">

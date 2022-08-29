@@ -59,7 +59,7 @@ class UtilisateurController extends Controller
                         'adresse'=>$request['adresse'],
                         'password'=> bcrypt($request['password']),
                         'telephone'=>$request['telephone'],
-                        'status' => 'utilisateur',
+                        
                     ]
                     );
                     return redirect('/login');

@@ -235,7 +235,7 @@
             <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#add">Ajouter un agent</button>
         </div>
   <div class="table responsive">
-  <table class="table  table-bordered  table-hover table-sm table-responsive table-striped" id="datatable">
+  <table class="table  table-bordered  table-hover table-sm table-responsive table-striped" id="mydatatable">
   <thead>
     <tr class="text-center">
       <th scope="col">Matricule</th>
