@@ -6,35 +6,32 @@
         <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#add">Ajouter un commissariat</button>
     </div>
     <div id="" class="table responsive">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <table id="example" class="table table-striped table-bordered  text-center" style="width:90%">
         <!-- <table id="mydatatable"  class="table  table-bordered  table-hover table-sm table-responsive table-striped" > -->
             <thead>
                 <tr class="text-center">
-                
                 <th scope="col">Nom</th>
                 <th scope="col">Localite</th>
-                <th scope="col">Matricule</th>
                 <th scope="col">Commissaire</th>
                 <th scope="col">Telephone</th>
                 <th scope="col" colspan="3">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($commissariats as $commissariats)
+                @foreach($commissariats as $commissariat)
                     <tr>
                         
-                        
-                        <td>{{$commissariats->nom}}</td>
-                        <td>{{$commissariats->localite}}</td>
-                        <td>{{$commissariats->matricule}}</td>
-                        <td>{{$commissariats->nomCommissaire}}</td>
-                        <td>{{$commissariats->telephone}}</td>
+                    
+                        <td>{{$commissariat->nom}}</td>
+                        <td>{{$commissariat->localite}}</td>
+                        <td>{{$commissariat->nomCommissaire}}</td>
+                        <td>{{$commissariat->telephone}}</td>
                         
                         </td>
-                        <td><a href="{{ route('commissariats.show', $commissariats->id)}}" class="btn btn-primary">Details</a></td>
-                        <td><a href="{{ route('commissariats.edit', $commissariats->id)}}" class="btn btn-primary">Modifier</a></td>
+                        <td><a href="{{ route('commissariats.show', $commissariat->id)}}" class="btn btn-primary">Details</a></td>
+                    <td><a href="{{ route('commissariats.edit',$commissariat->id)}}" class="btn btn-primary">Modifier</a></td>
                         <td>
-                            <form action="{{ route('commissariats.destroy', $commissariats->id)}}" method="post">
+                            <form action="{{ route('commissariats.destroy', $commissariat->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -56,7 +53,7 @@
                 <div class="modal-body">
                     <div class="row justify-content-center">
                         <div class="col-md">   
-                            <form method="POST" action="{{ route('Commissariat.create') }} ">
+                            <form method="POST" action="{{ route('commissariat.create') }} ">
                                 @csrf
                                 @method('POST') 
                                 <div class="row mb-3">

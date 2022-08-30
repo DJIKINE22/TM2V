@@ -1,3 +1,5 @@
+@extends('layouts.comm')
+@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -19,11 +21,10 @@
                         @method('POST') 
 
                         <div class="row mb-3">
-                            <label for="Immatriculation" class="col-md-4 col-form-label text-md-end">{{ __('Immatriculation') }}</label>
+                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Immatriculation') }}</label>
 
                             <div class="col-md-6">
-                            <input id="user" hidden type="integer" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user') }}" required autocomplete="user" autofocus>
-                                <input id="Immatriculation" type="text" class="form-control @error('immatri') is-invalid @enderror" name="immatri" value="{{ old('immatri') }}" required autocomplete="immatri" autofocus>
+                                <input id="immatri" type="text" class="form-control @error('immatri') is-invalid @enderror" name="immatri" value="{{ old('immatri') }}" required autocomplete="immatri" autofocus>
 
                                 @error('immatri')
                                     <span class="invalid-feedback" role="alert">
@@ -37,9 +38,9 @@
                             <label for="marque" class="col-md-4 col-form-label text-md-end">{{ __('Marque') }}</label>
 
                             <div class="col-md-6">
-                                <input id="marque" type="text" class="form-control @error('marque') is-invalid @enderror" name="marque" value="{{ old('marque') }}" required autocomplete="localite" autofocus>
+                                <input id="marque" type="text" class="form-control @error('marque') is-invalid @enderror" name="marque" value="{{ old('marque') }}" required autocomplete="marque" autofocus>
 
-                                @error('localite')
+                                @error('marque')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -48,7 +49,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="nomCommissaire" class="col-md-4 col-form-label text-md-end">{{ __('Modele') }}</label>
+                            <label for="modele" class="col-md-4 col-form-label text-md-end">{{ __('Modele') }}</label>
 
                             <div class="col-md-6">
                                 <input id="modele" type="text" class="form-control @error('modele') is-invalid @enderror" name="modele" value="{{ old('modele') }}" required autocomplete="modele" autofocus>
@@ -62,24 +63,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="couleur" class="col-md-4 col-form-label text-md-end">{{ __('Couleur') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="couleur" type="couleur" class="form-control @error('couleur') is-invalid @enderror" name="couleur" value="{{ old('couleur') }}" required autocomplete="couleur" autofocus>
-
-                                @error('couleur')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
                             <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Photo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="photo" type="text" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
+                                <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo" autofocus>
 
                                 @error('photo')
                                     <span class="invalid-feedback" role="alert">
@@ -90,12 +77,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="adresse" class="col-md-4 col-form-label text-md-end">{{ __('Carbuant') }}</label>
+                            <label for="couleur" class="col-md-4 col-form-label text-md-end">{{ __('Couleur') }}</label>
 
                             <div class="col-md-6">
-                                <input id="adresse" type="text" class="form-control @error('adresse') is-invalid @enderror" name="carbuant" value="{{ old('carbuant') }}" required autocomplete="carbuant" autofocus>
+                                <input id="couleur" type="color" class="form-control @error('couleur') is-invalid @enderror" name="couleur" value="{{ old('couleur') }}" required autocomplete="couleur" autofocus>
 
-                                @error('carbuant')
+                                @error('couleur')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -103,6 +90,22 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="carburant" class="col-md-4 col-form-label text-md-end">{{ __('Carburant') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="carburant" type="text" class="form-control @error('carburant') is-invalid @enderror" name="carburant" value="{{ old('carburant') }}" required autocomplete="carburant" autofocus>
+
+                                @error('carburant')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
+                        
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

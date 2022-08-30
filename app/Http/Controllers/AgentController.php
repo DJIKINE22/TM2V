@@ -144,13 +144,13 @@ class AgentController extends Controller
                 'matricule'=>['required','string','max:255'],
                 'adresse'=>['required','string','max:255'],
                 'email'=>['required','string','max:255'],
-                'password'=>['required','string','min:5','confirmed'],
+               
                 'telephone'=>['required','string','max:25'],
         ]);
     
-        Vol::whereId($id)->update($validatedData);
+        Agent::whereId($id)->update($validatedData);
     
-        return redirect('/voiture')->with('success', 'Agent mise à jour avec succèss');
+        return redirect('/agent')->with('success', 'Agent mise à jour avec succèss');
     }
 
     /**

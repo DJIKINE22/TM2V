@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class perte extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'date',
+        
+    ];
 }

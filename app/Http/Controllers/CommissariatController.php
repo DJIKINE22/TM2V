@@ -102,7 +102,7 @@ class CommissariatController extends Controller
     {
         // 
         $commissariats = Commissariat::findOrFail($id);
-        return view('Commissaria.index', compact('commissariats'));
+        return view('Commissaria.show', compact('commissariats'));
         
     }
 
@@ -115,6 +115,8 @@ class CommissariatController extends Controller
     public function edit($id)
     {
         //
+        $commissariats = Commissariat::findOrFail($id);
+        return view ('Commissaria.edit', compact(('commissariats')));
     }
 
     /**
@@ -127,6 +129,23 @@ class CommissariatController extends Controller
     public function update(Request $request, $id)
     {
         //
+         //
+         $validatedData = $request->validate([
+            'nom'=>['required','string','max:255'],
+            'localite'=>['required','string','max:255'],
+            'prenomCommissaire'=>['required','string','max:255'],
+            'nomCommissaire'=>['required','string','max:255'],
+            'matricule'=>['required','string','max:255'],
+            'adresse'=>['required','string','max:255'],
+            'email'=>['required','string','max:255'],
+            
+            'telephone'=>['required','string','max:25'],
+        ]);
+    
+        Commissariat::whereId($id)->update($validatedData);
+    
+        return redirect('/commissariat')->with('success', 'Agent mise à jour avec succèss');
+      
     }
 
     /**

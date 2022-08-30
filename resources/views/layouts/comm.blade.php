@@ -56,8 +56,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                        <img src="images/icon/logo.png" alt="Cool Admin" width="80%" auto; />
+                        <a class="logo" href="#">
+                        <img src="images/icon/logo.png" alt="TM2V" width="80%" auto; />
 
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -117,7 +117,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <div class="logo text-center">
                     <a href="#">
-                        <img src="images/icon/logo.png" alt="Cool Admin" width="80%" auto; />
+                        <img src="images/icon/logo.png" alt="TM2V" width="80%" auto; />
                     </a>
             </div>
             <nav class="navbar-sidebar">

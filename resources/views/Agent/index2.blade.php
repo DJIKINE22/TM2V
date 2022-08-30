@@ -53,7 +53,7 @@
                         </td>
                         <td><a href="{{ route('agents.show', $agents->id)}}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail"  >Details</a></td>
                         <td><a href="{{ route('agents.show', $agents->id)}}" class="btn btn-primary"> <button>Detail</button></a></td>
-                        <td><a href="" class="btn btn-primary">Modifier</a></td>
+                        <td><a href="{{ route('agents.edit2', $agents->id)}}" class="btn btn-primary">Modifier</a></td>
                         <td>
                             <form action="" method="post">
                             @csrf
