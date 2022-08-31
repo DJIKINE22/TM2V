@@ -29,7 +29,7 @@ class VoitureController extends Controller
                 
             
             
-            return view('Voiture.mo', compact('voitures'));
+            return view('Voiture.index', compact('voitures'));
     }
    
 

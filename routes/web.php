@@ -68,6 +68,14 @@ Route::get('/agent', [App\Http\Controllers\AgentController::class,'liste']);
 
 Route::get('/voiture', [App\Http\Controllers\VoitureController::class,'index']);
 Route::post('/voiture/create', [App\Http\Controllers\VoitureController::class,'create'])->name('Voiture.create');
+Route::get('/voiture/liste', [App\Http\Controllers\VoitureController::class,'liste']);
+Route::get('/voiture/delete', [App\Http\Controllers\VoitureController::class,'destroy'])->name('voitures.destroy');
+Route::get('/voiture/{id}', [App\Http\Controllers\VoitureController::class,'show'])->name('voitures.show');
+Route::get('/voiture/edit/{id}', [App\Http\Controllers\VoitureController::class,'edit'])->name('voitures.edit');
+Route::patch('/voiture/update/{id}', [App\Http\Controllers\VoitureController::class,'update'])->name('voitures.update');
+
+
+
 
 Route::get('/moto', [App\Http\Controllers\MotoController::class,'index']);
 Route::post('/moto/create', [App\Http\Controllers\MotoController::class,'create'])->name('Moto.create');

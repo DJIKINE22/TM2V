@@ -126,12 +126,12 @@
                         <a class="js-arrow" href="{{url('/home')}}">
                             <i class="fas fa-tachometer-alt"></i>DashboardDD</a>
                     </li>
-                    <li class="has-sub">
+                    <li class="has-sub {{Request::is('voiture') ? 'active':''}}">
                         <a class="js-arrow" href="#">
                             <i class="fas fa-car"></i>Voitures</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="{{url('/voitures')}}">Voitures recherchées</a>
+                                    <a href="{{url('/voiture')}}">Voitures recherchées</a>
                                 </li>
                                 <li>
                                     <a href="{{url('/voitures')}}">Voitures rétrouvées</a>
