@@ -6,15 +6,15 @@
         <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#add">Ajouter un commissariat</button>
     </div>
     <div id="" class="table responsive">
-    <table id="example" class="table table-striped table-bordered  text-center" style="width:90%">
+    <table id="example" class="table table-striped table-bordered  mx-auto" style="width:90%">
         <!-- <table id="mydatatable"  class="table  table-bordered  table-hover table-sm table-responsive table-striped" > -->
             <thead>
                 <tr class="text-center">
-                <th scope="col">Nom</th>
-                <th scope="col">Localite</th>
-                <th scope="col">Commissaire</th>
-                <th scope="col">Telephone</th>
-                <th scope="col" colspan="3">Action</th>
+                <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Localite</th>
+                <th scope="col" class="text-center">Commissaire</th>
+                <th scope="col" class="text-center">Telephone</th>
+                <th scope="col" colspan="3" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
                         <td><a href="{{ route('commissariats.show', $commissariat->id)}}" class="btn btn-primary">Details</a></td>
                     <td><a href="{{ route('commissariats.edit',$commissariat->id)}}" class="btn btn-primary">Modifier</a></td>
                         <td>
-                            <form action="{{ route('commissariats.destroy', $commissariat->id)}}" method="post">
+                            <form action="{{ route('commissariats.destroy', $commissariat->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Supprimer</button>

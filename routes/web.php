@@ -44,7 +44,7 @@ Route::post('/utilisateurs', [App\Http\Controllers\UtilisateurController::class,
 Route::get('/commissariats/create', [App\Http\Controllers\CommissariatController::class,'index'])->name('commissariats');
 Route::post('/commissariats', [App\Http\Controllers\CommissariatController::class,'create'])->name('commissariats.create');
 Route::get('/commissariats/liste', [App\Http\Controllers\CommissariatController::class,'liste']);
-Route::get('/commissariats/delete', [App\Http\Controllers\CommissariatController::class,'destroy'])->name('commissariats.destroy');
+Route::delete('/commissariats/delete/{id}', [App\Http\Controllers\CommissariatController::class,'destroy'])->name('commissariats.destroy');
 Route::get('/commissariats/{id}', [App\Http\Controllers\CommissariatController::class,'show'])->name('commissariats.show');
 Route::get('/commissariats/edit/{id}', [App\Http\Controllers\CommissariatController::class,'edit'])->name('commissariats.edit');
 Route::patch('/commissariats/update/{id}', [App\Http\Controllers\CommissariatController::class,'update'])->name('commissariats.update');

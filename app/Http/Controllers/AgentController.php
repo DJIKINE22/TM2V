@@ -144,7 +144,6 @@ class AgentController extends Controller
                 'matricule'=>['required','string','max:255'],
                 'adresse'=>['required','string','max:255'],
                 'email'=>['required','string','max:255'],
-               
                 'telephone'=>['required','string','max:25'],
         ]);
     

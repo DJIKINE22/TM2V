@@ -116,7 +116,7 @@ class CommissariatController extends Controller
     {
         //
         $commissariats = Commissariat::findOrFail($id);
-        return view ('Commissaria.edit', compact(('commissariats')));
+        return view ('/Commissaria/edit', compact(('commissariats')));
     }
 
     /**
@@ -157,5 +157,9 @@ class CommissariatController extends Controller
     public function destroy($id)
     {
         //
+        $commissariats = Commissariat::findOrFail($id);
+        $commissariats->delete();
+    
+        return redirect('/commissariats')->with('success', 'Reservation supprimer avec succèss');
     }
 }
