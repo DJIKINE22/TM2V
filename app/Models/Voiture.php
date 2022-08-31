@@ -15,8 +15,12 @@ class Voiture extends Model
         'carburant',
         'couleur',
         'photo',
+        'vehicule',
         
        
         
     ];
+    public function perte(){
+        return $this->HasMany(pertes::class, 'vehicule');
+    }
 }

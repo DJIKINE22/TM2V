@@ -27,10 +27,9 @@ class VoitureController extends Controller
             
             $voitures = Voiture::orderBy('created_at' ,'desc')-> paginate(5);
                 
-            $Auth = Auth::user();
-            $user = User::all();
             
-            return view('Voiture.mo', compact('voitures', 'Auth', 'user' ));
+            
+            return view('Voiture.mo', compact('voitures'));
     }
    
 
@@ -67,14 +66,14 @@ class VoitureController extends Controller
             'status' => 'recherché',
             ]);
             if($vehicule){
-                $Auth = Auth::user();
-                $user = User::all();
+                $users = Auth::user()->id;
+                
                
                 $perte = Perte::create(
                     [ 
-                        'user'  => $request['user'],
+                        'user'  => $users,
                         'vehicule' => $vehicule->id,
-                        'date_decla'=>$request['date'],
+                        'date_decla'=>$request['date_decla'],
                     ]
                     );}
                     if($perte){
@@ -86,9 +85,11 @@ class VoitureController extends Controller
                                 'couleur'=>$request['couleur'],
                                 'photo'=>$request['photo'],
                                 'carburant'=>$request['immatri'],
+                                'vehicule'=>$vehicule->id,
+                                
                             ]
                             );
-                    return redirect('/vehicule', compact('$user'));
+                    return redirect('/vehicule');
             }
 
         }

@@ -16,17 +16,17 @@
                 <div class="card-header">{{ __('Declaration de la perte') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('Voiture.create') }}">
+                    <form method="POST" action="{{ route('Moto.create') }}">
                         @csrf
                         @method('POST') 
 
                         <div class="row mb-3">
-                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Immatriculation') }}</label>
+                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Numero Ch') }}</label>
 
                             <div class="col-md-6">
-                                <input id="immatri" type="text" class="form-control @error('immatri') is-invalid @enderror" name="immatri" value="{{ old('immatri') }}" required autocomplete="immatri" autofocus>
+                                <input id="numero_ch" type="text" class="form-control @error('numero_ch') is-invalid @enderror" name="numero_ch" value="{{ old('numero_ch') }}" required autocomplete="numero_ch" autofocus>
 
-                                @error('immatri')
+                                @error('numero_ch')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -103,19 +103,7 @@
                             </div>
 </div>
 
-                        <div class="row mb-3">
-                            <label for="carburant" class="col-md-4 col-form-label text-md-end">{{ __('Carburant') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="carburant" type="text" class="form-control @error('carburant') is-invalid @enderror" name="carburant" value="{{ old('carburant') }}" required autocomplete="carburant" autofocus>
-
-                                @error('carburant')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                       
 
                         <div class="row mb-3">
                             <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Date') }}</label>

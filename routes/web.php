@@ -69,6 +69,9 @@ Route::get('/agent', [App\Http\Controllers\AgentController::class,'liste']);
 Route::get('/voiture', [App\Http\Controllers\VoitureController::class,'index']);
 Route::post('/voiture/create', [App\Http\Controllers\VoitureController::class,'create'])->name('Voiture.create');
 
+Route::get('/moto', [App\Http\Controllers\MotoController::class,'index']);
+Route::post('/moto/create', [App\Http\Controllers\MotoController::class,'create'])->name('Moto.create');
+
 
 
 

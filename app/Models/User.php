@@ -33,6 +33,9 @@ class User extends Authenticatable
     public function utilisateurs(){
         return $this->HasMany(utilisateurs::class, 'userId');
     }
+    public function perte(){
+        return $this->HasMany(pertes::class, 'user');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
