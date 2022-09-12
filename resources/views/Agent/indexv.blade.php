@@ -1,4 +1,4 @@
-@extends('layouts.commi')
+@extends('layouts.agent')
 @section('content')
 <!-- <style>
   

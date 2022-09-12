@@ -9,6 +9,8 @@ use App\Http\Controllers;
 use App\Models\Commissariat;
 use App\Models\Agent;
 use App\Models\User;
+use App\Models\Voiture;
+use App\Models\Moto;
 use App\Http\Controllers\AgentController;
 
 class AgentController extends Controller
@@ -28,6 +30,16 @@ class AgentController extends Controller
 
       $commissariats = Commissariat::all();
        return view('Agent.index', compact('commissariats','commissariats','agents'));
+    }
+    public function agentvoi(){
+        $voitures = Voiture::orderBy('created_at' ,'desc')-> paginate(5);
+         return view('Voiture.indexv', compact('voitures'));
+
+    }
+    public function agentmo(){
+        $motos = Moto::orderBy('created_at' ,'desc')-> paginate(5);
+         return view('Agent.dash', compact('motos'));
+
     }
     public function liste()
     {
@@ -60,12 +72,12 @@ class AgentController extends Controller
         );
         //ici nous allons definir les actions à faire si la verification est bonne
         if($verification){
-            // nous allons creer un user avec les données saisies
-            $user = User::create([
-            'name' => $request['nom'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            'status' => 'utilisateur',
+                        // nous allons creer un user avec les données saisies
+                        $user = User::create([
+                        'name' => $request['nom'],
+                        'email' => $request['email'],
+                        'password' => bcrypt($request['password']),
+                        'status' => 'agent',
             ]);
             if($user){
                 $agent = Agent::create(
@@ -79,7 +91,6 @@ class AgentController extends Controller
                         'password'=> bcrypt($request['password']),
                         'telephone'=>$request['telephone'],
                         'commissariat'=>$request['commissariat'],
-                        
                         'status' => 'agent',
                     ]
                     );

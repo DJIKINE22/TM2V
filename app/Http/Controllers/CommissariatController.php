@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Commissariat;
 use App\Models\User;
 use App\Models\Agent;
+use App\Models\Voiture;
 use App\Http\Controllers\CommissariatController;
+use App\Http\Controllers\VoitureController;
+
 
 class CommissariatController extends Controller
 {
@@ -24,8 +27,8 @@ class CommissariatController extends Controller
     public function dashboard()
     {
        
-        $agents = Agent::count();
-        return view('commissaria.dashboard',compact('$agents'));
+        $voitures = Voiture::count();
+        return view('commissaria.dashboard',compact('$voitures'));
     }
     /**
      * Show the form for creating a new resource.
@@ -75,7 +78,7 @@ class CommissariatController extends Controller
                         
                     ]
                     );
-                    return redirect('/login');
+                    return redirect('/commissariat');
             }
 
         }
@@ -160,6 +163,6 @@ class CommissariatController extends Controller
         $commissariats = Commissariat::findOrFail($id);
         $commissariats->delete();
     
-        return redirect('/commissariats')->with('success', 'Reservation supprimer avec succèss');
+        return redirect('/commissariat')->with('success', 'Reservation supprimer avec succèss');
     }
 }

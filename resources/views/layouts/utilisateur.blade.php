@@ -22,18 +22,13 @@
     <link href="{{asset('vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
     <link href = "{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
     
-
-
-
-    
-
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
     <!-- Vendor CSS-->
     <link href="{{asset('vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
@@ -56,8 +51,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="{{('images/icon/logo.png')}}" alt="TM2V" />
+                        <a class="logo" href="#">
+                        <img src="images/icon/logo.png" alt="TM2V" width="80%" auto; />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -98,13 +93,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="has-sub  ">
-                                    <a class="js-arrow" href="{{url('/agent')}}">
-                                    <i class="fa-solid fa-user-police"></i>Agent</a>
-                            
-                                </li>
- 
-                       
                 </div>
             </nav>
         </header>
@@ -116,7 +104,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <div class="logo text-center">
                     <a href="#">
-                        <img src="images/icon/logo.png" alt="Cool Admin" width="80%" auto; />
+                        <img src="images/icon/logo.png" alt="TM2V" width="80%" auto; />
                     </a>
             </div>
             <nav class="navbar-sidebar">
@@ -125,12 +113,12 @@
                         <a class="js-arrow" href="{{url('/home')}}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
-                    <li class="has-sub">
+                    <li class="has-sub {{Request::is('voiture') ? 'active':''}}">
                         <a class="js-arrow" href="#">
                             <i class="fas fa-car"></i>Voitures</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="{{url('/voitures')}}">Voitures recherchées</a>
+                                    <a href="{{url('/voiture')}}">Voitures recherchées</a>
                                 </li>
                                 <li>
                                     <a href="{{url('/voitures')}}">Voitures rétrouvées</a>
@@ -150,7 +138,7 @@
                                         </li>
                                     </ul>
                             </li>
-                                
+                               
                             </ul>
                         </ul>
                     </nav>

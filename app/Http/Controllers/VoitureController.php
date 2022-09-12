@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Voiture;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\VehiculeController;
+use App\Http\Controllers\VoitureController;
 use App\Models\Vehicule;
 use App\Models\perte;
 use App\Models\User;
@@ -26,10 +27,10 @@ class VoitureController extends Controller
 
             
             $voitures = Voiture::orderBy('created_at' ,'desc')-> paginate(5);
-                
+            $commissariats = Voiture::count();
             
             
-            return view('Voiture.index', compact('voitures'));
+            return view('Voiture.index', compact('voitures','commissariats'));
     }
    
 
@@ -68,7 +69,7 @@ class VoitureController extends Controller
             if($vehicule){
                 $users = Auth::user()->id;
                 
-               
+        
                 $perte = Perte::create(
                     [ 
                         'user'  => $users,
@@ -84,12 +85,12 @@ class VoitureController extends Controller
                                 'modele'=>$request['modele'],
                                 'couleur'=>$request['couleur'],
                                 'photo'=>$request['photo'],
-                                'carburant'=>$request['immatri'],
+                                'carburant'=>$request['carburant'],
                                 'vehicule'=>$vehicule->id,
                                 
                             ]
                             );
-                    return redirect('/vehicule');
+                    return redirect('/voiture');
             }
 
         }
@@ -118,11 +119,11 @@ class VoitureController extends Controller
         //
         
 
-            $agents = Voiture::findOrFail(2);
+            $voitures = Voiture::findOrFail($id);
 
             
 
-        return view('Agent.show3', compact('agents'));
+        return view('voiture.show', compact('voitures'));
     }
 
     /**
@@ -134,9 +135,9 @@ class VoitureController extends Controller
     public function edit($id)
     {
         //
-        $agents =  Voiture::findOrFail($id);
+        $voitures =  Voiture::findOrFail($id);
     
-        return view ('agent.edit2', compact(('agents')));
+        return view ('voiture.edit', compact(('voitures')));
 
     }
 

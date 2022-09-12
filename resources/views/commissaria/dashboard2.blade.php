@@ -1,16 +1,16 @@
-@extends('layouts.comm')
+@extends('layouts.commi')
 @section('content')
 <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card  text-white mb-4 " id="card1">
                                     <div class="card-body">
                                     <div class="text">
-                                            <h1>{{$agents}}<i class="fa fa-car" style="margin:auto"></i></h1>
+                                            <h1>{{$voitures}}<i class="fa fa-car" style="margin:auto"></i></h1>
                                                 <span>Voiture récherchées</span>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Voir Plus</a>
+                                        <a class="small text-white stretched-link" href="{{url('/voitures')}}">Voir Plus</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -19,7 +19,7 @@
                                 <div class="card text-white mb-4" id="card2">
                                     <div class="card-body">
                                         <div class="text">
-                                            <h1>8<i class="fa fa-car" style="margin:auto"></i></h1>
+                                            <h1>0<i class="fa fa-car" style="margin:auto"></i></h1>
                                                 <span>Voitures retrouvées</span>
                                         </div>
                                     </div>
@@ -36,12 +36,12 @@
                                                     
                                                 </div>
                                                 <div class="text">
-                                                    <h1>5O<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
+                                                    <h1>{{$motos}}<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
                                                     <span>Motos recherchées</span>
                                                 </div>
                                             </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Voir Plus</a>
+                                        <a class="small text-white stretched-link" href="{{url('/motos')}}">Voir Plus</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                                     
                                                 </div>
                                                 <div class="text">
-                                                    <h1>20<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
+                                                    <h1>0<i class="fa fa-motorcycle" style="margin:auto"></i></h1>
                                                     <span>Motos retrouvées</span>
                                                 </div>
                                             </div>

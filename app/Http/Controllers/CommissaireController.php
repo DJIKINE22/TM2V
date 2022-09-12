@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Commissaire;
 use App\Models\Agent;
+use App\Models\Voiture;
 
 class CommissaireController extends Controller
 {

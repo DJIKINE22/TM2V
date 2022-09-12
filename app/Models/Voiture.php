@@ -17,8 +17,6 @@ class Voiture extends Model
         'photo',
         'vehicule',
         
-       
-        
     ];
     public function perte(){
         return $this->HasMany(pertes::class, 'vehicule');

@@ -1,7 +1,7 @@
 @extends('layouts.commi')
 @section('content')
 
-<h1 class="title fixed">Voitures recherchées</h1>
+<h1 class="title fixed">Motos recherchées</h1>
     <div class="col-md-12 text-right">
         <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#add">Ajouter une declaration</button>
     </div>
@@ -18,20 +18,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($voitures as $voitures)
+                @foreach($motos as $motos)
                     <tr>
                         
                     
-                        <td>{{ $voitures->immatri}}</td>
-                        <td>{{ $voitures->marque}}</td>
-                        <td>{{ $voitures->modele}}</td>
-                        <td>{{ $voitures->couleur}}</td>
+                        <td>{{ $motos->numero_ch}}</td>
+                        <td>{{ $motos->marque}}</td>
+                        <td>{{ $motos->modele}}</td>
+                        <td>{{ $motos->couleur}}</td>
                         
                         </td>
-                        <td><a href="{{ route('voitures.show', $voitures->id)}}" class="btn btn-primary">Details</a></td>
-                    <td><a href="{{ route('voitures.edit', $voitures->id)}}" class="btn btn-primary">Modifier</a></td>
+                        <td><a href="{{ route('motos.show', $motos->id)}}" class="btn btn-primary">Details</a></td>
+                    <td><a href="{{ route('motos.edit', $motos->id)}}" class="btn btn-primary">Modifier</a></td>
                         <td>
-                            <form action="{{ route('voitures.destroy', $voitures->id)}}" method="POST">
+                            <form action="{{ route('motos.destroy', $motos->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -47,23 +47,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ajout Commissariat</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ajout perte</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center">
                         <div class="col-md">   
-                        <form method="POST" action="{{ route('Voiture.create') }}">
+                        <form method="POST" action="{{ route('Moto.create') }}">
                         @csrf
                         @method('POST') 
 
                         <div class="row mb-3">
-                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Immatriculation') }}</label>
+                            <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Numero Ch') }}</label>
 
                             <div class="col-md-6">
-                                <input id="immatri" type="text" class="form-control @error('immatri') is-invalid @enderror" name="immatri" value="{{ old('immatri') }}" required autocomplete="immatri" autofocus>
+                                <input id="numero_ch" type="text" class="form-control @error('numero_ch') is-invalid @enderror" name="numero_ch" value="{{ old('numero_ch') }}" required autocomplete="numero_ch" autofocus>
 
-                                @error('immatri')
+                                @error('numero_ch')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -140,19 +140,7 @@
                             </div>
 </div>
 
-                        <div class="row mb-3">
-                            <label for="carburant" class="col-md-4 col-form-label text-md-end">{{ __('Carburant') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="carburant" type="text" class="form-control @error('carburant') is-invalid @enderror" name="carburant" value="{{ old('carburant') }}" required autocomplete="carburant" autofocus>
-
-                                @error('carburant')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                       
 
                         <div class="row mb-3">
                             <label for="nom" class="col-md-4 col-form-label text-md-end">{{ __('Date') }}</label>
@@ -167,11 +155,15 @@
                                 @enderror
                             </div>
                         </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary"> {{ __('Ajouter') }}</button>
+                        
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Ajouter') }}
+                                </button>
                             </div>
-                </form>
+                        </div>
+                    </form>
     </div>
   </div>
 </div>

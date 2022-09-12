@@ -119,43 +119,31 @@
                 </div>
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
-                    <li class="has-sub nan-link  {{Request::is('home') ? 'active':''}}">
-                        <a class="js-arrow" href="{{url('/home')}}">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    </li>
-                    <li class="has-sub {{Request::is('voitures') ? 'active':''}}">
+                   
+                    <li class="has-sub {{Request::is('voiture') ? 'active':''}}">
                         <a class="js-arrow" href="#">
                             <i class="fas fa-car"></i>Voitures</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="{{url('/voitures')}}">Voitures recherchées</a>
+                                    <a href="{{url('/voiture')}}">Voitures recherchées</a>
                                 </li>
                                 <li>
-                                    <a href="#">Voitures rétrouvées</a>
+                                    <a href="{{url('/voitures')}}">Voitures rétrouvées</a>
                                 </li>
                                 
                             </ul>
                     </li>
-                    <li class="has-sub {{Request::is('motos') ? 'active':''}}">
+                    <li class="has-sub {{Request::is('moto') ? 'active':''}}">
                         <a class="js-arrow" href="#">
                         <i class="fas fa-motorcycle"></i>Motos</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li class="has-sub nan-link {{Request::is('motos') ? 'active':''}}">
-                                    <a href="{{url('/motos')}}">Motos recherchées</a>
+                                <li class="has-sub nan-link {{Request::is('moto') ? 'active':''}}">
+                                    <a href="{{url('/moto')}}">Motos recherchées</a>
                                 </li>
                                 <li class="has-sub nan-link">
-                                    <a href="#">Motos retrouvées</a>
+                                    <a href="{{url('/voitures')}}">Motos retrouvées</a>
                                 </li>
                             </ul>
-                    </li>
-                    <li class="has-sub {{Request::is('agent') ? 'active':''}} ">
-                        <a class="js-arrow" href="{{url('/agent')}}">
-                        <i class="fa fa-users"></i>Agent</a>
-                                    
-                    </li>
-                    <li class="has-sub {{Request::is('commissariat') ? 'active':''}} ">
-                        <a class="js-arrow" href="{{url('/commissariat')}}">
-                            <i class="fa fa-users"></i>Commissariat</a>
                     </li>
                 </ul>
             </ul>

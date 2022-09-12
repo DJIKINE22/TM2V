@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\Agent;
+use App\Models\Voiture;
+use App\Models\Moto;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\VoitureController;
+use App\Http\Controllers\MotoController;
 
 class HomeController extends Controller
 {
@@ -32,16 +36,18 @@ class HomeController extends Controller
         $user =  Auth::user();
         //dd($user);
         if($user->status == 'utilisateur'){
-            return view('Utilisateur.dash');
-        } else if ($user->status == 'administratreur'){
+            return view('Agent.dash');
+        } else if ($user->status == 'agent'){
             // $administrateurs = administrateurs::where('user', $user->id)->first();
-            return view('Admin.dashboard');
+            $voitures = Voiture::all();
+            return view('Agent.dash');
         }
         else if ($user-> status == 'commissaire'){
-            $agents = Agent::count();
+            $voitures = Voiture::count();
+            $motos = Moto::count();
            
 
-            return view('commissaria.dashboard2',compact('agents'));
+            return view('commissaria.dashboard2',compact('voitures','motos'));
         } 
         else{
             return view('home');

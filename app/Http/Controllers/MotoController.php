@@ -26,10 +26,10 @@ class MotoController extends Controller
 
             
             $motos =Moto::orderBy('created_at' ,'desc')-> paginate(5);
-                
+            $commissariats = Moto::count();   
             
             
-            return view('Moto.mo', compact('motos'));
+            return view('Moto.index', compact('motos'));
     }
    
 
@@ -89,7 +89,7 @@ class MotoController extends Controller
                                 
                             ]
                             );
-                    return redirect('/vehicule');
+                    return redirect('/motos');
             }
 
         }
@@ -118,11 +118,11 @@ class MotoController extends Controller
         //
         
 
-            $agents = Voiture::findOrFail(2);
+            $motos = Moto::findOrFail($id);
 
             
 
-        return view('Agent.show3', compact('agents'));
+        return view('moto.show', compact('motos'));
     }
 
     /**
@@ -136,7 +136,7 @@ class MotoController extends Controller
         //
         $motos =  Moto::findOrFail($id);
     
-        return view ('agent.edit2', compact(('agents')));
+        return view ('agent.edit', compact(('motos')));
 
     }
 
@@ -162,7 +162,7 @@ class MotoController extends Controller
     
         Voiture::whereId($id)->update($validatedData);
     
-        return redirect('/voiture')->with('success', 'Agent mise à jour avec succèss');
+        return redirect('/motos')->with('success', 'Agent mise à jour avec succèss');
     }
 
     /**
